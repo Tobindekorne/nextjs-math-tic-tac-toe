@@ -12,3 +12,7 @@
     bottom: 10rem;
     left: 2rem;
 }
+
+.header {
+    color: var(--color-primary);
+}

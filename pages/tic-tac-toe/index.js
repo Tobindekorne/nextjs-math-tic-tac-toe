@@ -8,47 +8,47 @@ import { useRouter } from 'next/router';
 const data = [
     {
         label: 1,
-        question: `$ f(x) = x - \\frac{7}{5} $`,
+        question: `Given $ f(x) = x - \\frac{7}{5} $, find $f'(x)$`,
         answer: `\\( f'(x) = 1 \\)`,
     },
     {
         label: 2,
-        question: `\\( f(x) = x^2\\)`,
+        question: `Given \\( f(x) = x^2\\), find $f'(x)$`,
         answer: `\\( f'(x) = 2x \\)`,
     },
     {
         label: 3,
-        question: `\\( f(x) = 2x^2 - 3x \\)`,
+        question: `Given \\( f(x) = 2x^2 - 3x \\), find $f'(x)$`,
         answer: `\\( f'(x) = 4x - 3 \\)`,
     },
     {
         label: 4,
-        question: `\\( f(x) = 3x^2 - {3 \\over 2} \\)`,
+        question: `Given \\( f(x) = 3x^2 - {3 \\over 2} \\), find $f'(x)$`,
         answer: `\\( f'(x) = 6x \\)`,
     },
     {
         label: 5,
-        question: `\\( f(x) = {1 \\over \\sqrt{x}} \\)`,
+        question: `Given \\( f(x) = {1 \\over \\sqrt{x}} \\), find $f'(x)$`,
         answer: `\\( f'(x) = {-1 \\over 2x \\sqrt{x}} \\)`,
     },
     {
         label: 6,
-        question: `\\( f(x) = {1 \\over x} \\)`,
+        question: `Given \\( f(x) = {1 \\over x} \\), find $f'(x)$`,
         answer: `\\( f'(x) = {-1 \\over x^2} \\)`,
     },
     {
         label: 7,
-        question: `\\( f(x) = \\sqrt{2x - 3} \\)`,
+        question: `Given \\( f(x) = \\sqrt{2x - 3} \\), find $f'(x)$`,
         answer: `\\( f'(x) = {1 \\over \\sqrt{2x - 3}} \\)`,
     },
     {
         label: 8,
-        question: `\\( f(x) = \\sqrt{x} \\)`,
+        question: `Given \\( f(x) = \\sqrt{x} \\), find $f'(x)$`,
         answer: `\\( f'(x) = {1 \\over 2 \\sqrt{x}} \\)`,
     },
     {
         label: 9,
-        question: `\\( f(x) = x \\sqrt{139} \\)`,
+        question: `Given \\( f(x) = x \\sqrt{139} \\), find $f'(x)$`,
         answer: `\\( f'(x) = \\sqrt{139} \\)`,
     },
 ];
@@ -68,10 +68,9 @@ const loadLocalStorage = () => {
                 : as[index].trim();
     });
 };
-const store = {};
 
 const Game = () => {
-    useEffect(loadLocalStorage, [store]);
+    useEffect(loadLocalStorage, []);
     const [currentTeam, setCurrentTeam] = useState('');
     const [showReset, setShowReset] = useState(false);
     const [cells, setCells] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -80,6 +79,7 @@ const Game = () => {
     const [currentQuestion, setCurrentQuestion] = useState('');
     const [currentAnswer, setCurrentAnswer] = useState('');
     const [win, setWin] = useState(null);
+    const [tie, setTie] = useState(false);
     const router = useRouter();
 
     const changeTeam = (num) => {
@@ -120,6 +120,8 @@ const Game = () => {
             [1, 4, 7],
         ];
 
+        let gameWon = false;
+
         winningCombos.forEach((combo) => {
             const first = squares[combo[0]];
             const second = squares[combo[1]];
@@ -127,8 +129,17 @@ const Game = () => {
             if (first === second && second === third) {
                 setWin(combo);
                 setShowReset(true);
+                gameWon = true;
             }
         });
+        return gameWon;
+    };
+
+    const checkTie = (squares) => {
+        setTie(
+            squares.every((square) => square === 'X' || square === 'O') &&
+                win === null
+        );
     };
 
     const handleClick = (num) => {
@@ -137,7 +148,8 @@ const Game = () => {
             let squares = [...cells];
             squares[currentCell] = currentTeam;
             setCells(squares);
-            checkGameWon(squares);
+            const gameWon = checkGameWon(squares);
+            !gameWon && checkTie(squares);
             changeTeam(num);
         }
         changeDisplay(num);
@@ -154,14 +166,19 @@ const Game = () => {
     return (
         <>
             {currentTeam === '' && <AskToStart onClick={handleStartGame} />}
-            {currentTeam !== '' && win === null && (
+            {currentTeam !== '' && win === null && !tie && (
                 <h1 className={`text-center ${styles.game__status}`}>
                     Current Team: {currentTeam}
                 </h1>
             )}
-            {win !== null && (
+            {win !== null && !tie && (
                 <h1 className={`text-center ${styles.game__status}`}>
                     Team {currentTeam === 'X' ? 'O' : 'X'} won!
+                </h1>
+            )}
+            {tie && (
+                <h1 className={`text-center ${styles.game__status}`}>
+                    Tie Game!
                 </h1>
             )}
             {display === 'board' && currentTeam !== '' && (
@@ -172,13 +189,27 @@ const Game = () => {
                 />
             )}
             {display === 'question' && (
-                <div className='flex flex-col flex-1 justify-center items-center'>
-                    <MathButton onClick={handleClick} math={currentQuestion} />
+                <div className='flex flex-col flex-1'>
+                    <h1 className={`text-center ${styles.header}`}>
+                        Question:
+                    </h1>
+                    <div className='flex flex-col flex-1 justify-center items-center'>
+                        <MathButton
+                            onClick={handleClick}
+                            math={currentQuestion}
+                        />
+                    </div>
                 </div>
             )}
             {display === 'answer' && (
-                <div className='flex flex-col flex-1 justify-center items-center'>
-                    <MathButton onClick={handleClick} math={currentAnswer} />
+                <div className='flex flex-col flex-1'>
+                    <h1 className={`text-center ${styles.header}`}>Answer:</h1>
+                    <div className='flex flex-col flex-1 justify-center items-center'>
+                        <MathButton
+                            onClick={handleClick}
+                            math={currentAnswer}
+                        />
+                    </div>
                 </div>
             )}
             {showReset && (
