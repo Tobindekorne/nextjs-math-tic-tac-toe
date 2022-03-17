@@ -1,0 +1,28 @@
+.modal {
+    background: var(--color-bg-complementary-dark);
+}
+
+.listGroup {
+    padding-left: 1rem;
+}
+
+.listGroupItem {
+    list-style-type: disc;
+    /* padding-inline-start: 1ch; */
+}
+
+.modalHeading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.mathCode {
+    display: block;
+    color: var(--color-primary);
+}
+
+.inlineMathCode {
+    display: inline-block;
+    color: var(--color-primary);
+}

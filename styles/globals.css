@@ -1,16 +1,120 @@
-html,
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Poppins:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --color-bg-dark: #031a33;
+    --color-bg: #002222;
+    --color-bg-variant: #032a38;
+
+    --color-bg-monochrome-dark: #006e6e;
+    --color-bg-monochrome-low: #123b3b;
+    --color-bg-monochrome-light: #216e6e;
+    --color-bg-monochrome-bright: #00baba;
+
+    --color-bg-complementary-dark: #006e6e;
+    --color-bg-complementary-light: #6e2900;
+
+    --color-primary: #fed48d;
+    --color-secondary: #ffea82;
+    --color-primary-variant: rgba(255, 234, 130, 0.8);
+    --color-primary-light: rgba(255, 234, 130, 0.6);
+    --color-white: #fff;
+    --color-light: rgba(255, 255, 255, 0.795);
+
+    --color-monochrome-dark: #806b47;
+    --color-monochrome-low: #fff2db;
+    --color-monochrome-light: #80796e;
+    --color-monochrome-bright: #ccab72;
+
+    --color-complementary-dark: #b38f52;
+    --color-complementary-low: #ffdfa8;
+    --color-complementary-light: #4077b3;
+    --color-complementary-bright: #8fc5ff;
+
+    --color-split-complementary-dark: #76b3b2;
+    --color-split-complementary-low: #9cfffe;
+    --color-split-complementary-light: #5652b3;
+    --color-split-complementary-bright: #8882ff;
+
+    --color-double-split-complementary-dark: #ffef9c;
+    --color-double-split-complementary-low: #a8fffe;
+    --color-double-split-complementary-light: #7b75ff;
+    --color-double-split-complementary-bright: #ffb082;
+
+    --transition: all 400ms ease;
+
+    --container-width-lg: 75%;
+    --container-width-md: 86%;
+    --container-width-sm: 90%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-white);
+    /* line-height: 1.7; */
+    /* background-image: url(../src/assets/bg-texture.png); */
+}
+
+body > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+.container {
+    width: var(--container-width-lg);
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--color-primary-variant);
+    color: var(--color-bg);
+    border-color: transparent;
+}
+
+.btn-primary {
+    background: var(--color-bg-monochrome-low);
+    color: var(--color-primary);
+}
+
+h1 {
+    font-size: calc(min(5vh, 5vw));
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: var(--color-primary-variant);
 }
 
-* {
-  box-sizing: border-box;
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+    }
 }

@@ -1,0 +1,57 @@
+.btnGame {
+    font-display: optional;
+    font-family: 'Noto Sans Math', sans-serif;
+    background: var(--color-bg-variant);
+    aspect-ratio: 1/1;
+    margin: 0;
+    font-size: calc(min(75vh / 6, 75vw / 6));
+    border-radius: 0;
+    transition: var(--transition);
+}
+
+.math {
+    font-size: 1.5rem;
+}
+
+.btnGame:hover {
+    background: transparent;
+    background: var(--color-bg-monochrome-low);
+    color: var(--color-white);
+    border-color: var(--color-primary-variant);
+}
+
+.btnGame:disabled,
+.btnGame[disabled],
+.btnGame:disabled:hover,
+.btnGame[disabled]:hover {
+    color: var(--color-complementary-dark);
+    background: transparent;
+    cursor: default;
+}
+
+.btnGame.deadSquare,
+.btnGame.deadSquare:hover {
+    color: var(--color-monochrome-light);
+}
+
+.btnGame.win,
+.btnGame.win:hover {
+    background: var(--color-bg-monochrome-low);
+    color: var(--color-primary);
+}
+
+.top {
+    border-top: none;
+}
+
+.right {
+    border-right: none;
+}
+
+.bottom {
+    border-bottom: none;
+}
+
+.left {
+    border-left: none;
+}

@@ -1,0 +1,35 @@
+.questionTable {
+    width: var(--container-width-lg);
+    margin: 0 auto;
+    border: 1px solid var(--color-primary);
+}
+
+.th {
+    font-size: calc(min(4vh, 4vw));
+    border: 1px solid var(--color-primary);
+    background: var(--color-bg-monochrome-low);
+    color: var(--color-primary);
+    text-align: center;
+}
+.tr {
+    border: 1px solid var(--color-primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.td {
+    height: 4rem;
+    border: 1px solid var(--color-primary);
+    max-width: 100%;
+}
+
+.btnRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.btn__icon {
+    font-size: 2rem;
+}

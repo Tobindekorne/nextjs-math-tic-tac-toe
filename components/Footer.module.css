@@ -1,0 +1,21 @@
+.footer {
+    background: var(--color-bg-variant);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1.5rem;
+    /* margin-top: auto; */
+}
+
+.footer__socials {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin-top: 1.5rem;
+}
+
+.footer__copyright {
+    margin-bottom: 1rem;
+}

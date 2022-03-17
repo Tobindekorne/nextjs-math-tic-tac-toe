@@ -1,0 +1,62 @@
+.board__container {
+    position: relative;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 70vh;
+    aspect-ratio: 1/1;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.strike {
+    position: absolute;
+    background-color: firebrick;
+}
+
+.strikeRow {
+    width: 100%;
+    height: 4px;
+}
+
+.strikeCol {
+    height: 100%;
+    width: 4px;
+}
+
+.strikeDiag {
+    width: 100%;
+    height: 4px;
+    top: 50%;
+}
+
+.strikeRow1 {
+    top: 15.6%;
+}
+
+.strikeRow2 {
+    top: 49%;
+}
+
+.strikeRow3 {
+    top: 82.5%;
+}
+.strikeCol1 {
+    left: 16.4%;
+}
+
+.strikeCol2 {
+    left: 49.8%;
+}
+
+.strikeCol3 {
+    left: 83.1%;
+}
+
+.strikeDiag1 {
+    transform: skewY(45deg);
+}
+
+.strikeDiag2 {
+    transform: skewY(-45deg);
+}

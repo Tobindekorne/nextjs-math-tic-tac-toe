@@ -1,0 +1,31 @@
+.input,
+.latex {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    background: var(--color-bg);
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.input:focus {
+    outline: 1px solid var(--color-secondary);
+    background: var(--color-bg-variant);
+}
+
+.input::placeholder {
+    color: var(--color-secondary);
+    opacity: 50%;
+}
+
+.tr {
+    border: 1px solid var(--color-primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.td {
+    height: 4rem;
+    border: 1px solid var(--color-primary);
+    max-width: 100%;
+}

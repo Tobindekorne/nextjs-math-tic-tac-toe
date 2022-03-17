@@ -1,0 +1,14 @@
+.game__status {
+    font-size: calc(min(30vh / 6, 30vw / 6));
+    color: var(--color-primary-variant);
+    background: var(--color-bg-monochrome-low);
+    width: calc(min(50vh, 50vw));
+    margin: 0 auto;
+    border-radius: 3rem;
+}
+
+.restartBtn {
+    position: absolute;
+    bottom: 10rem;
+    left: 2rem;
+}

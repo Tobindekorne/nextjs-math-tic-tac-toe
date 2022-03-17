@@ -1,0 +1,17 @@
+.math {
+    font-display: optional;
+    font-family: 'Noto Sans Math', sans-serif;
+    font-size: calc(min(5vh, 5vw));
+    border-radius: 1rem;
+    padding: 2rem 0;
+    background: var(--color-bg-variant);
+    border: 1px solid transparent;
+    width: 50%;
+    transition: var(--transition);
+}
+
+.math:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg-monochrome-low);
+    color: var(--color-white);
+}
