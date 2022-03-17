@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './gameButton.module.css';
+import styles from './GameButton.module.css';
 
 const GameButton = ({ id, label, onClick, winCombo }) => {
     let classList = `btn ${styles.btnGame}`;
