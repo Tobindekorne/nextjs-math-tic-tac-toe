@@ -8,54 +8,54 @@ import { useRouter } from 'next/router';
 const data = [
     {
         label: 1,
-        question: `Given $ f(x) = x - \\frac{7}{5} $, find $f'(x)$`,
+        question: `Given $$ f(x) = x - \\frac{7}{5} $$, find $f'(x)$`,
         answer: `\\( f'(x) = 1 \\)`,
     },
     {
         label: 2,
-        question: `Given \\( f(x) = x^2\\), find $f'(x)$`,
+        question: `Given $$ f(x) = x^2 $$, find $f'(x)$`,
         answer: `\\( f'(x) = 2x \\)`,
     },
     {
         label: 3,
-        question: `Given \\( f(x) = 2x^2 - 3x \\), find $f'(x)$`,
+        question: `Given $$ f(x) = 2x^2 - 3x $$, find $f'(x)$`,
         answer: `\\( f'(x) = 4x - 3 \\)`,
     },
     {
         label: 4,
-        question: `Given \\( f(x) = 3x^2 - {3 \\over 2} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = 3x^2 - {3 \\over 2} $$, find $f'(x)$`,
         answer: `\\( f'(x) = 6x \\)`,
     },
     {
         label: 5,
-        question: `Given \\( f(x) = {1 \\over \\sqrt{x}} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = {1 \\over \\sqrt{x}} $$, find $f'(x)$`,
         answer: `\\( f'(x) = {-1 \\over 2x \\sqrt{x}} \\)`,
     },
     {
         label: 6,
-        question: `Given \\( f(x) = {1 \\over x} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = {1 \\over x} $$, find $f'(x)$`,
         answer: `\\( f'(x) = {-1 \\over x^2} \\)`,
     },
     {
         label: 7,
-        question: `Given \\( f(x) = \\sqrt{2x - 3} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = \\sqrt{2x - 3} $$, find $f'(x)$`,
         answer: `\\( f'(x) = {1 \\over \\sqrt{2x - 3}} \\)`,
     },
     {
         label: 8,
-        question: `Given \\( f(x) = \\sqrt{x} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = \\sqrt{x} $$, find $f'(x)$`,
         answer: `\\( f'(x) = {1 \\over 2 \\sqrt{x}} \\)`,
     },
     {
         label: 9,
-        question: `Given \\( f(x) = x \\sqrt{139} \\), find $f'(x)$`,
+        question: `Given $$ f(x) = x \\sqrt{139} $$, find $f'(x)$`,
         answer: `\\( f'(x) = \\sqrt{139} \\)`,
     },
 ];
 
 const loadLocalStorage = () => {
-    const qs = localStorage.getItem('questions')?.split(',');
-    const as = localStorage.getItem('answers')?.split(',');
+    const qs = localStorage.getItem('questions')?.split('✆');
+    const as = localStorage.getItem('answers')?.split('✆');
     if (!qs || !as) return;
     data.forEach((datum, index) => {
         datum.question =

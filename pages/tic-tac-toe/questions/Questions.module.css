@@ -17,19 +17,17 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.td {
-    height: 4rem;
-    border: 1px solid var(--color-primary);
-    max-width: 100%;
-}
-
-.btnRow {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
 .btn__icon {
     font-size: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .th {
+        display: none;
+    }
+
+    .btn__icon {
+        font-size: 1rem;
+        left: 0.5rem;
+    }
 }
