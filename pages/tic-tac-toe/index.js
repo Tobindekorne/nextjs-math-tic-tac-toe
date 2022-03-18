@@ -193,10 +193,11 @@ const Game = () => {
                     <h1 className={`text-center ${styles.header}`}>
                         Question:
                     </h1>
-                    <div className='flex flex-col flex-1 justify-center items-center'>
+                    <div className='flex flex-col flex-1 justify-between items-center'>
                         <MathButton
                             onClick={handleClick}
                             math={currentQuestion}
+                            btnText='Go to Answer'
                         />
                     </div>
                 </div>
@@ -208,6 +209,7 @@ const Game = () => {
                         <MathButton
                             onClick={handleClick}
                             math={currentAnswer}
+                            btnText='Go to Game'
                         />
                     </div>
                 </div>

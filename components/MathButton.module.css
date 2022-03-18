@@ -3,15 +3,28 @@
     font-family: 'Noto Sans Math', sans-serif;
     font-size: calc(min(5vh, 5vw));
     border-radius: 1rem;
-    padding: 2rem 0;
+    padding: 2rem;
     background: var(--color-bg-variant);
-    border: 1px solid transparent;
-    width: 50%;
-    transition: var(--transition);
+    width: 100%;
 }
 
-.math:hover {
-    border-color: var(--color-primary);
-    background: var(--color-bg-monochrome-low);
-    color: var(--color-white);
+.prompt {
+    width: var(--container-width-lg);
+}
+
+.promptBtn {
+    width: 50%;
+    justify-self: center;
+    font-size: calc(min(5vh, 5vw));
+    align-self: center;
+    height: calc(min(7vh, 7vw));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1040px) {
+    .promptBtn {
+        width: 75%;
+    }
 }
