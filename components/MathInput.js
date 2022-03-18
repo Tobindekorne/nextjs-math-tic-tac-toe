@@ -237,7 +237,7 @@ const MathInput = ({ placeholder, id }) => {
                     <button
                         className='btn btn-primary'
                         unselectable='on'
-                        onMouseDown={(e) => insertMath(e, 'x^2')}
+                        onMouseDown={(e) => insertMath(e, '^2')}
                     >
                         <Latex>$x^2$</Latex>
                     </button>
