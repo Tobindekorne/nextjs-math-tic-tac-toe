@@ -12,7 +12,59 @@ const MathInput = ({ placeholder, id }) => {
         const el = document.querySelector(`#${id}`);
         const start = el.selectionStart;
         const end = el.selectionEnd;
+        if (['(', '{', '[', '$'].includes(e.nativeEvent.data)) return;
+        if (
+            [')', '}', ']', '$'].includes(e.nativeEvent.data) &&
+            math[start - 1] === e.nativeEvent.data &&
+            start === end
+        ) {
+            return;
+        }
         setMath(e.target.value);
+    };
+
+    const handleKeyDown = (e) => {
+        const el = document.querySelector(`#${id}`);
+        const start = el.selectionStart;
+        const end = el.selectionEnd;
+        let closer = '';
+        switch (e.key) {
+            case '(':
+                closer = ')';
+                break;
+            case '{':
+                closer = '}';
+                break;
+            case '[':
+                closer = ']';
+                break;
+            case '$':
+                closer = '$';
+                break;
+            default:
+                break;
+        }
+        if (['(', '{', '[', '$'].includes(e.key)) {
+            setMath(
+                math.slice(0, el.selectionStart) +
+                    e.key +
+                    math.slice(el.selectionStart, el.selectionEnd) +
+                    closer +
+                    math.slice(el.selectionEnd, math.length)
+            );
+            window.setTimeout(function () {
+                el.setSelectionRange(start + 1, end + 1);
+            }, 0);
+        }
+        if (
+            [')', '}', ']', '$'].includes(e.key) &&
+            math[start] === e.key &&
+            start === end
+        ) {
+            window.setTimeout(function () {
+                el.setSelectionRange(start + 1, start + 1);
+            }, 0);
+        }
     };
 
     const insertMath = (e, symbol) => {
@@ -61,7 +113,8 @@ const MathInput = ({ placeholder, id }) => {
                         id={id}
                         className={`${styles.input}`}
                         value={math}
-                        onChange={handleChange}
+                        onKeyDown={(e) => handleKeyDown(e)}
+                        onChange={(e) => handleChange(e)}
                         onFocus={() => setFocus(true)}
                         onBlur={() => setFocus(false)}
                         type='text'
